@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>UECM3763 Computational Finance (Assignment #2)</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>UECM3763 Computational Finance (Assignment #2)</h1>
+
+<hr/>
+
+<p>DEADLINES: </p>
+
+<ul>
+<li>This assignment will contribute to 5 marks of the coursework.</li>
+<li>Assignment submission: 27/7/2015 (Monday) by 12:00 noon.</li>
+<li>Peer Reviews: 3/8/2015 (Monday) by 12:00 noon.</li>
+</ul>
+
+<p><strong>All deadlines are final and no extensions are allowed.</strong> Delay in submission of the assigments will delays the peer review process. Thus a penalty of 1 mark per day will be imposed for one day late in submission of assignment. Each student will need to review two peers. No mark will be awarded if a student failed to review the two peers.</p>
+
+<hr/>
+
+<h4>There are a total of 2 tasks for this assignments:</h4>
+
+<ul>
+<li>Simulating SDE</li>
+<li>Downloading and manipulating stock data</li>
+</ul>
+
+<h4>General comments:</h4>
+
+<ul>
+<li>Login to your GitHub. (If you have forgotten how to do that, please refer to Assignment #1)</li>
+<li>While still stay logged in GitHub, go to <a href="https://github.com/yongkheng/UECM3763_assign2">https://github.com/yongkheng/UECM3763_assign2</a></li>
+<li>Click &ldquo;fork&rdquo; button at the top right hand corner. Now your GitHub will have a copy of the UECM3763_assign1 repository. Copy the URL.</li>
+<li>Go to the google form <a href="http://goo.gl/forms/vblJl6e391">http://goo.gl/forms/vblJl6e391</a>.</li>
+<li>Fill in your name, ID and the URL to your newly forked repository.</li>
+<li>Answer the question in the google form and submit.</li>
+<li>Clone the repository to your PC.</li>
+<li>In the local repository, there are 4 empty files: gbm.py, mr.py, download_data.py, and report.docx.</li>
+<li>The word file report.dox is an empty file. You will write your report on the findings in Task 1 and Task 2 in this report.docx and upload to your github.</li>
+</ul>
+
+<hr/>
+
+<h2>Task 1 &ndash; Simulating SDE</h2>
+
+<p>Objectives:</p>
+
+<ul>
+<li>Simulate geometric Brownian motion and mean reversal process</li>
+<li>Calculate expectations and probability from simulations.</li>
+</ul>
+
+<h4>1. Simulating geometric Brownian motion</h4>
+
+<p>Consider the following geometric Brownian motion (GBM):</p>
+
+<pre><code>dS(t) = 0.1 dt + 0.26 dB(t); S(0) = 39
+</code></pre>
+
+<ul>
+<li>What is the expectation value of S(3)?</li>
+<li>What is the variance of S(3)?</li>
+</ul>
+
+<p>Edit the file &ldquo;gbm.py&rdquo; to simulate 1000 runs of GBM for 0 &lt; t &lt; 3. (Refer to lecture slides.) </p>
+
+<ul>
+<li>Plot only <strong>5</strong> realizations of the GBM with proper labels.</li>
+<li>(For the following, please explain how you obtained the values.)</li>
+<li>Calculate the expectation value of S(3) based on the simulation. </li>
+<li>Calculate the variance of S(3).</li>
+<li>Calculate P[S(3)&gt; 39].</li>
+<li>Calculate E[S(3) | S(3) &gt; 39].</li>
+</ul>
+
+<h4>2. Simulating mean reversal process</h4>
+
+<p>Consider the following process:</p>
+
+<pre><code>dR(t) = [0.064 - R(t)] dt + 0.27 R(t) dB(t); R(0) = 3
+</code></pre>
+
+<p>Edit the file &ldquo;mr.py&rdquo; to simulate 1000 runs of above mean reversal process for 0 &lt; t &lt; 1.</p>
+
+<ul>
+<li>Plot only <strong>5</strong> realizations of the mean reversal process with proper labels.</li>
+<li>(For the following, please explain how you obtained the values.)</li>
+<li>Calculate the expectation value of R(1) based on the simulation. </li>
+<li>Calculate P[R(1)&gt; 2].</li>
+</ul>
+
+<hr/>
+
+<h2>Task 2 &ndash; Downloading and manipulating stock data</h2>
+
+<p>Objective:</p>
+
+<ul>
+<li>to download stock data from Yahoo!Finance</li>
+<li>to perform basic manipulation on stock data</li>
+</ul>
+
+<h4>1. FTSE Bursa Malaysia KLCI Index</h4>
+
+<p>Investigate the FTSE Bursa Malaysia KLCI Index</p>
+
+<ul>
+<li>How many components stocks are there?</li>
+<li>create a table list the following information for all the component stocks: Stock Name, Stock Code, Stock Sector, Weightage in FTSEKLCI, PE Ratio, Net Market Capital.</li>
+</ul>
+
+<h4>2. Downloading data</h4>
+
+<p>Consider the following code is an example that downloads daily data for a counter called Vitrox (code: 0097) from Yahoo!Finance starting from 1 Jan 2010 until 1 May 2015.</p>
+
+<pre><code>from pandas.io.data import DataReader as DR
+from datetime import datetime as dt
+
+start = dt(2010, 1, 1)
+end = dt(2015, 5, 1)
+data = DR(&quot;0097.KL&quot;, &#39;yahoo&#39;, start, end)
+</code></pre>
+
+<p>Complete the following tasks for Task 2:</p>
+
+<ul>
+<li>Choose 1 FTSEKLCI component of your choice, say counter X.</li>
+<li>Download at least 3 years of daily data for counter X.</li>
+<li>Plot a 5-day moving average plot for the downloaded data. Explain how you calculate the 5-day moving average.</li>
+<li>Download FTSEKLCI daily data for the same duration as your data for X.</li>
+<li>Compute the correlation of your counter X with FTSEKLCI.</li>
+</ul>
+
+<hr/>
+
+<p>One you have submitted your assignment, you may go to <a href="http://goo.gl/forms/AGBsRLCH3L">http://goo.gl/forms/AGBsRLCH3L</a> to do your peer review starting 27/7/2015 (Monday) after 12:00 noon.</p>
+
+</body>
+
+</html>
+
